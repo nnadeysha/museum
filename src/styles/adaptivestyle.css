@@ -556,6 +556,9 @@
     }
   }
   @media screen and (max-width: 768px) {
+    .map-content{
+      display: none;
+    }
      /* menu burger */
      .main-menu-768w {
       display: none;

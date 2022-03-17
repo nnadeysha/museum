@@ -3,7 +3,6 @@
 .swiper {
   
   width: 100%;
-  height: 810px;
   position: absolute;
   left: 0;
   z-index: -1;
@@ -16,11 +15,15 @@
  
 
 }
+.swiper-slide-activ{
+  overflow: hidden!important;
+}
 .w-slide {
   text-align: right;
   transition: linear 3s;
   position: relative;
   right: 0;
+  overflow: hidden;
 }
 
 .welcome-slider-progress {
@@ -30,7 +33,7 @@
   bottom: 0px;
   position: absolute;
   z-index: 21;
-  left: 0;
+  right: 0;
   
   display: flex;
   justify-content: space-around;
@@ -653,9 +656,7 @@ video {
   background-color: transparent;
 }
 
-.scale-icon:hover {
-  transform: scale(0.98);
-}
+
 .video {
   position: relative;
 }
@@ -1234,6 +1235,8 @@ input::-webkit-inner-spin-button {
 }
 .active {
   transform: translateX(0%);
+  
+  left: 8.7%;
 }
 
 .form-container {
@@ -1790,11 +1793,11 @@ ul>li>a {
 }
 
 .footer-navigation > nav{
-  max-width: 516px;
+  width: 20vw;
   height: 150px;
   display: flex;
   justify-content: space-between;
-  
+  margin-left: 100px;
 }
 .footer-navigation1,
 .footer-navigation2
@@ -1828,7 +1831,7 @@ ul>li>a {
 
 .video-button:hover, .icon:hover, .social-link:hover {
   cursor: pointer;
-  transform: scale(1.01);
+  
   filter: invert(58%) sepia(11%) saturate(1082%) hue-rotate(
 356deg) brightness(91%) contrast(85%);
   transition: linear .3s;
@@ -1839,14 +1842,14 @@ ul>li>a {
 .footer-username:hover,
 li>a:hover {
   color: #9D8665;
-  transform: scale(0.98);
+  
   
 }
 
 .footer-line {
   background-color: #666;
   height: 3px;
-  
+
   width: 100%;
   margin-top: 35px;
 }

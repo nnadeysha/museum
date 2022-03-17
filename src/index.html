@@ -272,29 +272,12 @@
         <div class="video-gallery">
           <div class="video-slider">
             <div class="player" id="player1"></div>
-            <!-- <div class="to-play" data-id="player1" data-video="zp1BXPX8jcU"
-            style="background-image: url(./images/preview1.jpg); position: relative; width: 452px; height: 254px;">
-          <img src="./images/playinvideo.svg" alt="play" width="40" height="40" style="position: absolute; top: 50px;
-          left: 50px;"></div> -->
+          
             <div class="player" id="player2"></div>
             <div class="player" id="player3"></div>
            
             </script>
-            <!-- <iframe class="video-slide video-slide1" src="https://www.youtube.com/embed/zp1BXPX8jcU?controls=0" title="YouTube video player"  
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy">
-            </iframe>
-            <iframe class="video-slide video-slide2" src="https://www.youtube.com/embed/Vi5D6FKhRmo?controls=0" title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy">
-            </iframe>
-            <iframe class="video-slide video-slide3" src="https://www.youtube.com/embed/NOhDysLnTvY?controls=0" title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy">
-            </iframe>
-            <iframe class="video-slide video-slide4" src="https://www.youtube.com/embed/aWmJ5DgyWPI?controls=0" title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy">
-            </iframe>
-            <iframe class="video-slide video-slide5" src="https://www.youtube.com/embed/2OR0OCr6uRE?controls=0" title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy">
-            </iframe> -->
+        
           </div>
           <div class="video-slider-dots">
             <span class="video-slider-arrow-left"></span>
@@ -472,11 +455,11 @@
                             <div class="form-age-button">
                               <p class="age-text">Basic 18+ (20 €)</p>
                               <div class="quantity_inner form-quantity">        
-                                <button type="button" class="bt_minus" onclick="this.nextElementSibling.stepDown()">
+                                <button type="button" class="bt_minus" id="tickets-buy-input-form" onclick="this.nextElementSibling.stepDown()">
                                   <svg viewBox="0 0 20 20"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                                 </button>
                                 <input type="number" value="1" class="quantity basic-form" min="0" max="20" readonly>
-                                <button type="button" class="bt_plus" onclick="this.previousElementSibling.stepUp()">
+                                <button type="button" class="bt_plus" id="tickets-buy-input-form" onclick="this.previousElementSibling.stepUp()">
                                   <svg viewBox="0 0 20 20"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                                 </button>
                               </div>
@@ -484,11 +467,11 @@
                             <div class="form-age-button">
                               <p class="age-text">Senior 65+ (10 €)</p>
                               <div class="quantity_inner form-quantity">        
-                                <button type="button" class="bt_minus" onclick="this.nextElementSibling.stepDown()">
+                                <button type="button" class="bt_minus" id="tickets-buy-input-form" onclick="this.nextElementSibling.stepDown()">
                                   <svg viewBox="0 0 20 20"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                                 </button>
                                 <input type="number" value="1" class="quantity senior-form" min="0" max="20" readonly>
-                                <button type="button" class="bt_plus" onclick="this.previousElementSibling.stepUp()">
+                                <button type="button" class="bt_plus" id="tickets-buy-input-form" onclick="this.previousElementSibling.stepUp()">
                                   <svg viewBox="0 0 20 20"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                                 </button>
                               </div>
@@ -515,14 +498,14 @@
                       <div class="form-total">
                         <div class="form-total-basic">
                           <p>
-                            <span class="total-count-block">2</span>
+                            <span class="total-count-block total-count-block--basic"></span>
                             Basic (20 €)
                           </p>
-                          <p>40 €</p>
+                          <p class="total-count-block--basic-sum">40 €</p>
                         </div>
                         <div class="form-total-senior">
                           <p>
-                            <span class="total-count-block">2</span>
+                            <span class="total-count-block total-count-block--senior"></span>
                             Senior (10 €)
                           </p>
                           <p>20 €</p>
@@ -566,26 +549,8 @@
               <a class="mailto" href="mailto:info@louvre.fr">mail: info@louvre.fr</a>
             </p>
           </div>
-          <iframe width="960px" height="620px" src="https://api.mapbox.com/styles/v1/fespis/ckuintvdhaw2717pri2yskamt.html?title=false&amp;access_token=pk.eyJ1IjoiZmVzcGlzIiwiYSI6ImNrdWluYTVmYzBia2wzM282a2oxOGx6enAifQ.l2Lwe0LiOQpS0fFyhO9GiA&amp;zoomwheel=false#15.93/48.860985/2.335975" title="Monochrome" style="border:none;"></iframe>
+          <iframe class="map-content" width="960px" height="620px" src="https://api.mapbox.com/styles/v1/fespis/ckuintvdhaw2717pri2yskamt.html?title=false&amp;access_token=pk.eyJ1IjoiZmVzcGlzIiwiYSI6ImNrdWluYTVmYzBia2wzM282a2oxOGx6enAifQ.l2Lwe0LiOQpS0fFyhO9GiA&amp;zoomwheel=false#15.93/48.860985/2.335975" title="Monochrome" style="border:none;"></iframe>
  
-  <!-- <script>
-            function initMap(){
-    let options = {
-      center: { lat: 48.8607240140003, lng: 2.3376332692401993 },
-      zoom: 15, 
-    };
-    map = new google.maps.Map(document.getElementById("map"), options);
-    
-    const marker = new google.maps.Marker({
-    position:  { lat: 48.8607240140003, lng: 2.3376332692401993 },
-    map: map,
-    icon: 'https://svgsilh.com/svg/157354.svg',
-    width: '20px',
-    height: '32px'
-  });
-    
-  }
-          </script> -->
         </div>
       </div>
     </section>
