@@ -431,22 +431,23 @@
                     <p class="form-subtitle">Tour to Louvre</p>
                     <div class="underline-title form-underline-title"></div>
                     <form class="form" action="index.html">
-                      <div>
-                        <label for="date" class="select-label select-label-date">
-                          <input id="date" class="select" type="date" >
+                      <div class="time-input">
+                        <label for="date" >
+                          <input id="date" class="time-select"  type="date" name="calendar" 
+                          max="2022-06-04" min="2022-01-29">
                         </label>
-                        <label for="time" class="select-label select-label-time">
-                          <input id="time" class="select" type="time" >
+                        <label for="time" >
+                          <input id="time" class="time-select" type="time" placeholder="Enter time" min="16:00" max="22:00" step="1800" required>
                         </label>
                       </div>
                       <label for="name" class="label-input label-name"></label>
-                      <input id="name" type="text" placeholder="Name" name="name" class="input">
-                      <label for="email" class="label-input label-email"></label>
-                      <input id="email" type="email" placeholder="E-mail" class="input">
+                      <input id="name" type="text" placeholder="Name" name="name" class="input" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" title="Имя должно содержать от 2 до 20 символов, которыми могут быть латинские буквы и цифры, первый символ обязательно буква" required>
+                      <label for="email" class="label-input label-email" ></label>
+                      <input id="email" type="email" placeholder="E-mail" class="input" pattern="^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$" required>
                       <label for="tel" class="label-input label-tel"></label>
-                      <input id="tel" type="tel" placeholder="Phone" class="input">
-                      <label for="ticket-choose" class="label-input label-ticket-choose"></label>
-                      <input id="ticket-choose" type="number" class="input input-number" placeholder="Ticket Type" >
+                      <input id="tel" type="tel" placeholder="Phone" class="input" pattern="^\+?[78][-\(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$" required>
+                      <!-- <label for="ticket-choose" class="label-input label-ticket-choose"></label>
+                      <input id="ticket-choose" type="number" class="input input-number" placeholder="Ticket Type" > -->
                       <div class="form-entry-ticket">
                         <div class="form-entry-ticket-container">
                             <h5 class="form-title-mini">Entry Ticket</h5>
@@ -479,6 +480,7 @@
                           </div>
                         </div>
                       </div>
+                      <input type="submit" id="submit" value="">
                     </form>
                   </div>
                   <div class="form-right">
@@ -487,8 +489,8 @@
                         <div class="overview-details">
                           <h4 class="overview-title">Overview</h4>
                           <h5 class="overview-title-mini">Tour to Louvre</h5>
-                          <p><img src="./images/date.svg" alt="date"><span>Friday, August 19</span></p>
-                          <p><img src="./images/time.svg" alt="time"><span>16 : 30</span></p>
+                          <p><img src="./images/date.svg" alt="date"><span class="ticket-text-date"></span></p>
+                          <p><img src="./images/time.svg" alt="time"><span class="ticket-text-time">16 : 00</span></p>
                           <p><img src="./images/temporary.svg" alt="temporary"><span>Temporary exhibition</span></p>
                         </div>
                         <div class="overview-details-img">
@@ -523,7 +525,8 @@
                         <p class="card-bottom"></p>
                       </div>
                       <div class="form-booking">
-                        <a class="booking-button" href="#tickets"><span>Book</span></a>
+
+                        <a class="booking-button" href="#tickets"><label for="submit" class="book-submit">Book</label></a>
                       </div>
                     </div>
                   </div>

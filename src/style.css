@@ -613,6 +613,7 @@ video {
   color: #FFFFFF;
 }
 
+
 .volume-icon {
   background-image:url(./images/btn-volume.svg);
   width: 38px;
@@ -993,7 +994,17 @@ input[type=radio] {
   opacity: 0;
   cursor: pointer;
 }
-
+input[type=submit] {
+ display: none;
+}
+.book-submit{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  line-height: 40px;
+}
 /* Create a custom radio button */
 .checkmark {
   position: absolute;
@@ -1575,12 +1586,7 @@ margin-bottom: 10px;
   height: 15px;
 }
 
-.select-label-date::after {
-  background-image: url(./images/date.svg);
-}
-.select-label-time::after {
-  background-image: url(./images/time.svg);
-}
+
 .select-label-date::before {
   content: 'Date';
   position: absolute;
@@ -1597,63 +1603,20 @@ top: 0px;
 z-index: 1;
 }
 
-.select-label-time::before {
-  content: 'Time';
-  position: absolute;
-  font-family: Roboto;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: 21px;
-letter-spacing: 0em;
-text-align: left;
-padding-left: 30px;
-left: 15px;
-top: 0px;
-z-index: 1;
-}
-input[type="time"]::-webkit-calendar-picker-indicator,
-input[type="time"]::-webkit-datetime-edit-hour-field,
-input[type="time"]::-webkit-datetime-edit-minute-field
-{ display: none;
-  
-   }
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator,
-input[type="date"]::-webkit-datetime-edit-month-field,
-input[type="date"]::-webkit-datetime-edit-day-field,
-input[type="date"]::-webkit-datetime-edit-year-field,
-input[type="date"]::-webkit-datetime-edit-text {
-    display: none;
-   
-}
-input[type="date"] {
-  margin-right: 15px;
-}
 
-input[type=time] {
-  outline: none;
-}
 
-.select {
-  width: 143px;
-  height: 45px;
-  padding-left: 45px;
-  position: relative;
-  font-size: 18px;
-  background-image: url(./images/select-open.svg);
-  background-position: right 15px top 50%,0 0;
-  background-size: 17px 17px,100%;
-  background-repeat: no-repeat;
-  outline: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: #fff;
-  transition: .25s;
-  border: 1px solid #030303;
-}
 
+.time-select{
+  width: 200px;
+  height: 50px;
+  border: 1px solid #000;
+  font-size: 20px;
+}
+.time-input{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
 .label-input {
   position: relative;
 }

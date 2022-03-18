@@ -12,18 +12,32 @@ export class TicketForm {
     this.totalForm = form.querySelector(".total-sum-form");
     const inputsTicketsForm = form.querySelectorAll("#tickets-buy-input-form");
     this.radioTypeForm = form.querySelectorAll('input[type="radio"]');
-    this.totalCountTicketsBasic = document.querySelector('.total-count-block--basic');
-    this.totalCountTicketsSenior = document.querySelector('.total-count-block--senior');
-    this.priceBasicTicket = document.querySelector('.price-of-ticket--basic');
-    this.priceSeniorTicket = document.querySelector('.price-of-ticket--senior');
-    this.sumOfTicketPriceBasic = document.querySelector('.total-count-block--basic-sum');
-    this.sumOfTicketPriceSenior = document.querySelector('.total-count-block--senior-sum');
+    this.dateInput = form.querySelector('input[type="date"]');
+    this.timeInput = form.querySelector('input[type="time"]');
+    const currentDate = new Date();
+    this.dateInput.value = currentDate.toISOString().slice(0,10);
+    this.dateInput.min = currentDate.toISOString().slice(0,10);
+    this.totalCountTicketsBasic = document.querySelector(
+      ".total-count-block--basic"
+    );
+    this.totalCountTicketsSenior = document.querySelector(
+      ".total-count-block--senior"
+    );
+    this.priceBasicTicket = document.querySelector(".price-of-ticket--basic");
+    this.priceSeniorTicket = document.querySelector(".price-of-ticket--senior");
+    this.sumOfTicketPriceBasic = document.querySelector(
+      ".total-count-block--basic-sum"
+    );
+    this.sumOfTicketPriceSenior = document.querySelector(
+      ".total-count-block--senior-sum"
+    );
     const ripple = document.createElement("div");
     ripple.classList.add("ripple");
 
     ripple.style.display = "none";
     bookBtn.prepend(ripple);
-
+    this.textDate = document.querySelector('.ticket-text-date');
+    this.textTime = document.querySelector('.ticket-text-time');
     bookBtn.addEventListener("click", (e) => {
       const left = e.clientX - e.target.getBoundingClientRect().left;
       const top = e.clientY - e.target.getBoundingClientRect().top;
@@ -41,6 +55,19 @@ export class TicketForm {
     inputsTicketsForm.forEach((el) => {
       el.addEventListener("click", () => this.update());
     });
+
+    this.dateInput.addEventListener("change", () => {
+      this.updateDateData()
+    })
+
+    this.timeInput.addEventListener("change", () => {
+      this.updateDateData()
+    })
+   
+    bookBtn.onclick = () =>{
+      console.log('book')
+    }
+
   }
 
   show(totalPrice, seniorTypeTicket, basicTypeTicket) {
@@ -53,7 +80,8 @@ export class TicketForm {
     setTimeout(() => {
       this.form.classList.toggle("active");
     }, 100);
-    this.update()
+    this.update();
+    this.updateDateData()
   }
 
   hide() {
@@ -62,6 +90,14 @@ export class TicketForm {
       this.form.ontransitionend = null;
     };
     this.form.classList.remove("active");
+  }
+  updateDateData(){
+    this.textDate.textContent = this.dateInput.value;
+    this.textTime.textContent = this.timeInput.value;
+  }
+
+  validationForm(){
+    
   }
   update() {
     const seniorTypeTicket = document.querySelector(".senior");
@@ -72,47 +108,66 @@ export class TicketForm {
       this.seniorTypeTicketForm.value.toString()
     );
     seniorTypeTicket.value = localStorage.getItem("seniorTypeTicket");
-    
+
     localStorage.setItem(
       "basicTypeTicket",
       this.basicTypeTicketForm.value.toString()
     );
     basicTypeTicket.value = localStorage.getItem("basicTypeTicket");
-    this.totalCountTicketsBasic.textContent = localStorage.getItem("basicTypeTicket");
-    this.totalCountTicketsSenior.textContent =localStorage.getItem("seniorTypeTicket")
+    this.totalCountTicketsBasic.textContent =
+      localStorage.getItem("basicTypeTicket");
+    this.totalCountTicketsSenior.textContent =
+      localStorage.getItem("seniorTypeTicket");
     let totalPrice;
     const price = {
       radio1: 20,
       radio2: 25,
-      radio3: 40
-    }
-    
+      radio3: 40,
+    };
+
     let calculate = () => {
-      for(let key in localStorage){
-        if(key === 'radio1'){
-          this.priceBasicTicket.textContent =  `€ ${parseInt(price.radio1)}`;
-          this.priceSeniorTicket.textContent =  `€ ${parseInt(price.radio1) / 2}`;
-          this.sumOfTicketPriceBasic.textContent = `€ ${parseInt(basicTypeTicket.value) * parseInt(price.radio1)}`;
-          this.sumOfTicketPriceSenior.textContent = `€ ${parseInt(seniorTypeTicket.value) * parseInt(price.radio1) / 2}`;
+      for (let key in localStorage) {
+        if (key === "radio1") {
+          this.priceBasicTicket.textContent = `€ ${parseInt(price.radio1)}`;
+          this.priceSeniorTicket.textContent = `€ ${
+            parseInt(price.radio1) / 2
+          }`;
+          this.sumOfTicketPriceBasic.textContent = `€ ${
+            parseInt(basicTypeTicket.value) * parseInt(price.radio1)
+          }`;
+          this.sumOfTicketPriceSenior.textContent = `€ ${
+            (parseInt(seniorTypeTicket.value) * parseInt(price.radio1)) / 2
+          }`;
           totalPrice =
             (parseInt(seniorTypeTicket.value) * parseInt(price.radio1)) / 2 +
             parseInt(basicTypeTicket.value) * parseInt(price.radio1);
-          
         }
-        if(key === 'radio2'){
+        if (key === "radio2") {
           this.priceBasicTicket.textContent = `€ ${parseInt(price.radio2)}`;
-          this.priceSeniorTicket.textContent =  `€ ${parseInt(price.radio2) / 2}`;
-          this.sumOfTicketPriceBasic.textContent = `€ ${parseInt(basicTypeTicket.value) * parseInt(price.radio2)}`;
-          this.sumOfTicketPriceSenior.textContent = `€ ${parseInt(seniorTypeTicket.value) * parseInt(price.radio2) / 2}`;
+          this.priceSeniorTicket.textContent = `€ ${
+            parseInt(price.radio2) / 2
+          }`;
+          this.sumOfTicketPriceBasic.textContent = `€ ${
+            parseInt(basicTypeTicket.value) * parseInt(price.radio2)
+          }`;
+          this.sumOfTicketPriceSenior.textContent = `€ ${
+            (parseInt(seniorTypeTicket.value) * parseInt(price.radio2)) / 2
+          }`;
           totalPrice =
-          (parseInt(seniorTypeTicket.value) * parseInt(price.radio2)) / 2 +
-          parseInt(basicTypeTicket.value) * parseInt(price.radio2);
+            (parseInt(seniorTypeTicket.value) * parseInt(price.radio2)) / 2 +
+            parseInt(basicTypeTicket.value) * parseInt(price.radio2);
         }
-        if(key === 'radio3'){
-          this.priceBasicTicket.textContent =  `€ ${parseInt(price.radio3)}`;
-          this.priceSeniorTicket.textContent = `€ ${parseInt(price.radio3) / 2}`;
-          this.sumOfTicketPriceBasic.textContent = `€ ${parseInt(basicTypeTicket.value) * parseInt(price.radio3)}`;
-          this.sumOfTicketPriceSenior.textContent = `€ ${parseInt(seniorTypeTicket.value) * parseInt(price.radio3) / 2}`;
+        if (key === "radio3") {
+          this.priceBasicTicket.textContent = `€ ${parseInt(price.radio3)}`;
+          this.priceSeniorTicket.textContent = `€ ${
+            parseInt(price.radio3) / 2
+          }`;
+          this.sumOfTicketPriceBasic.textContent = `€ ${
+            parseInt(basicTypeTicket.value) * parseInt(price.radio3)
+          }`;
+          this.sumOfTicketPriceSenior.textContent = `€ ${
+            (parseInt(seniorTypeTicket.value) * parseInt(price.radio3)) / 2
+          }`;
           totalPrice =
             (parseInt(seniorTypeTicket.value) * parseInt(price.radio3)) / 2 +
             parseInt(basicTypeTicket.value) * parseInt(price.radio3);
@@ -122,13 +177,7 @@ export class TicketForm {
       total.innerHTML = `Total: €${totalPrice}`;
       this.totalForm.innerHTML = `Total: €${totalPrice}`;
       localStorage.setItem("Total", totalPrice.toString());
-         /*  totalPrice =
-            (parseInt(seniorTypeTicket.value) * parseInt(radio.value)) / 2 +
-            parseInt(basicTypeTicket.value) * parseInt(radio.value);
-      */
     };
-    
     calculate();
-    //localStorage.setItem("Total", totalPrice.toString());Basic (20 €)Senior (10 €)
   }
 }
